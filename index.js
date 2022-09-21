@@ -30,12 +30,14 @@ const puppeteer = require("puppeteer");
       const name = urlAndName.innerText;
       const price = basicInfo.querySelector(".pq-hdr-product_price").innerText;
       const originalPrice = basicInfo.querySelector(".line-height s small")?.innerText;
-
-      console.log(url, name, price, originalPrice);
+      const inStock = product.querySelector(".allInfoSearch .addCartSearch .stock-popup i.fa-check");
+      let stock = false;
+      if (inStock) {
+        stock = true;
+      }
+      console.log(url, name, price, originalPrice, stock);
     });
   });
-
-  //TODO scroll to bottom of page to load all products
   //TODO evaluate pages and output all products and status to csv
   //TODO make an api request with the product info to a server
   //schedule this script to run every 1 minute
